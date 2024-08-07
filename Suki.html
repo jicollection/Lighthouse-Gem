@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flip Booklet</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+      flex-direction: column;
+    }
+    #flipbook {
+      width: 1220px; /* Increased width to accommodate landscape images and the gap */
+      height: 400px;
+    }
+    .page {
+      width: 600px;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      background-color: white;
+      border: 1px solid #ddd;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page video {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
+    .page:nth-child(odd) {
+      transform: rotateY(0deg);
+      left: 0;
+    }
+    .page:nth-child(even) {
+      transform: rotateY(180deg);
+      right: 0;
+    }
+    .page.even {
+      left: 620px; /* Position the even pages to the right */
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+    .text-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+    .text-left {
+      width: 30%;
+      text-align: left;
+      color: gray;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 24px;
+      padding-left: 10px; /* Ensure padding to the left */
+    }
+    .text-right {
+      width: 30%;
+      text-align: right;
+      color: gray;
+      font-family: 'Brush Script MT', cursive;
+      font-size: 24px;
+      padding-right: 10px; /* Ensure padding to the right */
+    }
+    .watermark {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      max-width: 150px;
+      max-height: 50px;
+      opacity: 0.6; /* Set watermark to 60% transparency */
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="container-fluid">
+    <ul>
+      <li><strong>Flip Booklet</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#" id="prevPage">Previous</a></li>
+      <li><a href="#" id="nextPage">Next</a></li>
+    </ul>
+  </nav>
+
+  <div id="flipbook">
+    <div class="page odd"><img src="https://i.imgur.com/oL3JyND.jpg" alt="Page 1"></div>
+    <div class="page even"><img src="https://i.imgur.com/gqPV5fR.jpeg" alt="Page 2"></div>
+    <div class="page odd"><img src="https://i.imgur.com/gyJxeQ5.jpeg" alt="Page 3"></div>
+    <div class="page even"><img src="https://i.imgur.com/yl2cXQX.jpeg" alt="Page 4"></div>
+    <div class="page odd"><img src="https://i.imgur.com/lVT2MXH.jpeg" alt="Page 5"></div>
+    <div class="page even"><img src="https://i.imgur.com/lKPWUE5.jpeg" alt="Page 6"></div>
+    <div class="page odd"><img src="https://i.imgur.com/9LgAFSC.jpeg" alt="Page 7"></div>
+    <div class="page even"><img src="https://i.imgur.com/5kOpXgP.jpeg" alt="Page 8"></div>
+    <div class="page odd"><img src="https://i.imgur.com/o2yvaSK.jpeg" alt="Page 9"></div>
+    <div class="page even"><img src="https://i.imgur.com/qL3VOUf.jpeg" alt="Page 10"></div>
+    <div class="page odd"><img src="https://i.imgur.com/WXcJun0.jpeg" alt="Page 11"></div>
+    <div class="page even"><img src="https://i.imgur.com/BcWja2K.jpeg" alt="Page 12"></div>
+    <div class="page odd"><img src="https://i.imgur.com/pJhVd0k.jpeg" alt="Page 13"></div>
+    <div class="page even"><img src="https://i.imgur.com/Fy1813P.jpeg" alt="Page 14"></div>
+    <div class="page odd"><img src="https://i.imgur.com/2L2qdct.jpg" alt="Page 15"></div>
+    <div class="page even">
+      <div class="text-container">
+        <div class="text-left">
+          Welcome to the Magic of Jose Ignacio!
+        </div>
+        <div class="text-right">
+          you'll have your secret little beach with views of our lighthouse<br>
+          what a welcome respite away from the crowds
+        </div>
+      </div>
+      <video controls>
+        <source src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/IMG_1608.mov">
+        Your browser does not support the video tag.
+      </video>
+      <img class="watermark" src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/jicollectionlogoblue.png" alt="Watermark">
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="turn.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#flipbook").turn({
+        width: 1220, // Increased width to match the container
+        height: 400,
+        autoCenter: true
+      });
+
+      $('#prevPage').click(function(e) {
+        e.preventDefault();
+        $("#flipbook").turn("previous");
+      });
+
+      $('#nextPage').click(function(e) {
+        e.preventDefault();
+        $("#flipbook").turn("next");
+      });
+    });
+  </script>
+</body>
+</html>
