@@ -41,6 +41,7 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
+      z-index: 1; /* Ensure the video is behind the watermark */
     }
     .page:nth-child(odd) {
       transform: rotateY(0deg);
@@ -89,7 +90,8 @@
       left: 50%;
       transform: translateX(-50%);
       opacity: 0.6;
-      z-index: 10;
+      z-index: 2; /* Ensure the watermark is above the video */
+      max-width: 50%; /* Adjust the size as needed */
     }
   </style>
 </head>
