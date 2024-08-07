@@ -93,6 +93,20 @@
       max-height: 20px; /* Adjust size as needed */
       opacity: 0.6; /* Set watermark to 60% transparency */
     }
+
+    @media (max-width: 768px) {
+      #flipbook {
+        width: 90vw;
+        height: auto;
+      }
+      .page {
+        width: 45vw;
+        height: 90vw;
+      }
+      .page.even {
+        left: 45vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -164,3 +178,4 @@
   </script>
 </body>
 </html>
+
