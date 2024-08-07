@@ -41,7 +41,6 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
-      z-index: 1; /* Ensure the video is behind the watermark */
     }
     .page:nth-child(odd) {
       transform: rotateY(0deg);
@@ -89,10 +88,10 @@
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      opacity: 0.6;
-      z-index: 2; /* Ensure the watermark is above the video */
-      width: 50px; /* Adjust the size as needed */
-      height: auto;
+      z-index: 10;
+      width: 50px; /* Adjust size as needed */
+      height: 20px; /* Adjust size as needed */
+      opacity: 0.6; /* Set watermark to 60% transparency */
     }
   </style>
 </head>
@@ -135,10 +134,10 @@
         </div>
       </div>
       <video controls>
-        <source src="IMG_1608.mov" type="video/mp4">
+        <source src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/IMG_1608.mov">
         Your browser does not support the video tag.
       </video>
-      <img src="jicollectionlogoblue.png" alt="Watermark" class="watermark">
+      <img class="watermark" src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/jicollectionlogoblue.png" alt="Watermark">
     </div>
   </div>
 
@@ -165,5 +164,3 @@
   </script>
 </body>
 </html>
-
-
