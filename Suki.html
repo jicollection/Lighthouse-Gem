@@ -16,7 +16,7 @@
       flex-direction: column;
     }
     #flipbook {
-      width: 1220px; /* Increased width to accommodate landscape images and the gap */
+      width: 1220px;
       height: 400px;
     }
     .page {
@@ -51,7 +51,7 @@
       right: 0;
     }
     .page.even {
-      left: 620px; /* Position the even pages to the right */
+      left: 620px;
     }
     nav {
       margin-bottom: 20px;
@@ -73,7 +73,7 @@
       color: gray;
       font-family: 'Brush Script MT', cursive;
       font-size: 24px;
-      padding-left: 10px; /* Ensure padding to the left */
+      padding-left: 10px;
     }
     .text-right {
       width: 30%;
@@ -81,17 +81,15 @@
       color: gray;
       font-family: 'Brush Script MT', cursive;
       font-size: 24px;
-      padding-right: 10px; /* Ensure padding to the right */
+      padding-right: 10px;
     }
     .watermark {
       position: absolute;
       top: 10px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 10;
-      max-width: 150px;
-      max-height: 50px;
-      opacity: 0.6; /* Set watermark to 60% transparency */
+      opacity: 0.6;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -133,11 +131,11 @@
           what a welcome respite away from the crowds
         </div>
       </div>
+      <img src="jicollectionlogoblue.png" class="watermark" alt="Watermark">
       <video controls>
-        <source src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/IMG_1608.mov">
+        <source src="IMG_1608.mov" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <img class="watermark" src="/Users/reginacantoni/Dropbox/My Mac (reginas-mbp)/Downloads/turn.js-master/jicollectionlogoblue.png" alt="Watermark">
     </div>
   </div>
 
